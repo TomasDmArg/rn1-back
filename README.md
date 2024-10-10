@@ -4,27 +4,19 @@ A simple Todo API with user authentication built using FastAPI and SQLAlchemy.
 
 ## Table of Contents
 
-- [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Database Setup](#database-setup)
 - [Running the Application](#running-the-application)
 - [API Documentation](#api-documentation)
 - [Project Structure](#project-structure)
-- [Runtime Environment](#runtime-environment)
-
-## Prerequisites
-
-- Python 3.8+
-- MySQL 5.7+ or MariaDB 10.2+
-- pip (Python package manager)
 
 ## Installation
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/todo-api.git
-   cd todo-api
+   git clone https://github.com/TomasDmArg/rn1-back/
+   cd rn1-back
    ```
 
 2. Create a virtual environment:
@@ -68,7 +60,7 @@ A simple Todo API with user authentication built using FastAPI and SQLAlchemy.
    ```
 3. Use the provided SQL script to create the necessary tables:
    ```
-   mysql -u your_username -p your_database_name < create_tables.sql
+   mysql -u your_username -p your_database_name < /app/utils/create_tables.sql
    ```
 
 ## Running the Application
