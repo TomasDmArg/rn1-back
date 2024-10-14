@@ -1,4 +1,4 @@
-import jwt
+from jwt import encode, decode, ExpiredSignatureError, InvalidTokenError
 from fastapi import HTTPException, Security
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from passlib.context import CryptContext
@@ -29,7 +29,7 @@ class AuthHandler():
             'iat': datetime.utcnow(),
             'sub': user_id
         }
-        return jwt.encode(
+        return encode(
             payload,
             self.secret,
             algorithm='HS256'
@@ -37,11 +37,11 @@ class AuthHandler():
 
     def decode_token(self, token):
         try:
-            payload = jwt.decode(token, self.secret, algorithms=['HS256'])
+            payload = decode(token, self.secret, algorithms=['HS256'])
             return payload['sub']
-        except jwt.ExpiredSignatureError:
+        except ExpiredSignatureError:
             raise HTTPException(status_code=401, detail='Signature has expired')
-        except jwt.InvalidTokenError as e:
+        except InvalidTokenError as e:
             raise HTTPException(status_code=401, detail='Invalid token')
 
     def auth_wrapper(self, auth: HTTPAuthorizationCredentials = Security(security)):
